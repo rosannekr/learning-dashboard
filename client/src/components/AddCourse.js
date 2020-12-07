@@ -126,10 +126,16 @@ export default class AddCourse extends Component {
             </div>
 
             <button
-              className="btn btn-outline-dark mt-2 px-3"
+              className="btn btn-outline-dark mt-2 px-3 mr-2"
               onClick={this.addCourse}
             >
               Add
+            </button>
+            <button
+              className="btn btn-outline-dark mt-2 px-3"
+              onClick={this.props.closeForm}
+            >
+              Close
             </button>
           </form>
         )}

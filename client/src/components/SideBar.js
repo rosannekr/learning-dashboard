@@ -15,7 +15,6 @@ export default class SideBar extends Component {
 
   async componentDidMount() {
     try {
-      // fetch categories
       const categories = await api.getCategories();
       this.setState({ categories });
     } catch (error) {
@@ -43,9 +42,8 @@ export default class SideBar extends Component {
     e.preventDefault();
 
     try {
-      // Add new category to database
       await api.addCategory(this.state.newCategory);
-      // Fetch categories again to reflect changes in sidebar
+
       const categories = await api.getCategories();
       this.setState({ categories, newCategory: "" });
     } catch (error) {
@@ -66,7 +64,7 @@ export default class SideBar extends Component {
   deleteCategory = async (category_id) => {
     try {
       await api.deleteCategory(category_id);
-      // Fetch categories again to reflect changes in sidebar
+
       const categories = await api.getCategories();
       this.setState({ categories });
     } catch (error) {
@@ -122,13 +120,6 @@ export default class SideBar extends Component {
               </a>
 
               <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  // onClick={() => this.renameCategory(category.id)}
-                >
-                  Rename
-                </a>
                 <a
                   className="dropdown-item"
                   href="#"

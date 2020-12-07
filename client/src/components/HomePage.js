@@ -16,7 +16,6 @@ export default class HomePage extends Component {
 
   async componentDidMount() {
     try {
-      // fetch all categories and courses
       const categories = await api.getCategories();
       const courses = await api.getCourses();
 
@@ -40,28 +39,32 @@ export default class HomePage extends Component {
     this.setState({ showForm: true });
   };
 
+  closeForm = () => {
+    this.setState({ showForm: false });
+  };
+
   render() {
     const { categories, selected, showForm } = this.state;
     const courses = this.filteredCourses();
 
     return (
       <div className="mt-4 pt-5 ml-5" id="home">
-        <div className="d-flex ml-4 justify-content-center">
-          <h2>My Courses</h2>
-          <select
-            className="form-control w-auto ml-4"
-            value={selected}
-            onChange={this.handleSelect}
-          >
-            <option value="">All courses</option>
-            <option value="in progress">In progress</option>
-            <option value="on hold">On hold</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
+        <h2>My Courses</h2>
+
+        <select
+          className="form-control w-auto mx-auto"
+          value={selected}
+          onChange={this.handleSelect}
+        >
+          <option value="">All courses</option>
+          <option value="in progress">In progress</option>
+          <option value="on hold">On hold</option>
+          <option value="completed">Completed</option>
+        </select>
+
         <div className="d-flex flex-wrap justify-content-center">
-          {courses.map((course, i) => (
-            <div key={i}>
+          {courses.map((course) => (
+            <div key={course.id}>
               <CourseCard
                 category={categories?.find((e) => e.id === course.category_id)}
                 course={course}
@@ -80,7 +83,7 @@ export default class HomePage extends Component {
           >
             <i className="fas fa-plus"></i>
           </button>
-          {showForm && <AddCourse />}
+          {showForm && <AddCourse closeForm={this.closeForm} />}
         </div>
       </div>
     );

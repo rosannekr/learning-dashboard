@@ -1,6 +1,8 @@
-# MVP - Learning Dashboard
+# Learning Dashboard
 
-An app to organize your online learning. Save links to online courses from different platforms, organize them in categories and keep track of your progress with to do lists.
+An app to organize your online learning. Save links to online courses from different platforms, organize them in categories and keep track of your progress with to do lists. Built during a 1-week sprint at CodeOp's Full Stack Development Bootcamp.
+
+Watch a demo: https://www.loom.com/share/171236ec8917437aa9082b961b9ad768
 
 ## Setup
 
